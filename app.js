@@ -141,11 +141,22 @@ function setupEventListeners() {
 
 function populateLineSelect() {
   const select = document.getElementById('incidentLine');
+  const filterSelect = document.getElementById('lineFilter');
+  
   LINES.forEach(line => {
+    // Populate report form
     const option = document.createElement('option');
     option.value = line.id;
     option.textContent = `${line.name} (${line.type})`;
     select.appendChild(option);
+    
+    // Populate filter if it exists
+    if (filterSelect) {
+      const filterOption = document.createElement('option');
+      filterOption.value = line.id;
+      filterOption.textContent = `${line.name} (${line.type})`;
+      filterSelect.appendChild(filterOption);
+    }
   });
 }
 
