@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBila - City Transport Navigator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            min-height: 100vh;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .incident-badge {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .rooster-button {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .rooster-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .rooster-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .station-item {
+            transition: all 0.2s ease;
+        }
+
+        .station-item:hover {
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .route-card {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .route-card:hover {
+            border-color: #818cf8;
+            transform: translateY(-2px);
+        }
+
+        .route-card.selected {
+            border-color: #4f46e5;
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .line-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+
+        .incident-scroll {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .incident-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .incident-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        .incident-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .incident-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // État global
+        const state = {
+            departure: '',
+            arrival: '',
+            routes: [],
+            incidents: [],
+            showIncidentForm: false,
+            selectedLine: '',
+            incidentDescription: '',
+            selectedRoute: null,
+        };
+
+        // Données
+        const stations = [
+            'Gare du Nord (Paris)',
+            'Gare de Lyon (Paris)',
+            'Châtelet (Paris)',
+            'Saint-Lazare (Paris)',
+            'Bastille (Paris)',
+            'Nation (Paris)',
+            'Montmartre (Paris)',
+            'République (Paris)',
+            'Concorde (Paris)',
+            'Invalides (Paris)',
+            'Défense (La Défense)',
+            'Belleville (Paris)',
+            'Pigalle (Paris)',
+            'Odéon (Paris)',
+            'Censier-Daubenton (Paris)',
+        ];
+
+        const transportLines = [
+            { id: '1', name: 'Ligne 1', type: 'Métro', color: '#FFC72C', textColor: '#000' },
+            { id: '2', name: 'Ligne 2', type: 'Métro', color: '#003CA6', textColor: '#fff' },
+            { id: '4', name: 'Ligne 4', type: 'Métro', color: '#CD7F32', textColor: '#fff' },
+            { id: 'RER-A', name: 'RER A', type: 'RER', color: '#EF3B39', textColor: '#fff' },
+            { id: 'RER-B', name: 'RER B', type: 'RER', color: '#4E9AD6', textColor: '#fff' },
+            { id: 'BUS-38', name: 'Bus 38', type: 'Bus', color: '#006837', textColor: '#fff' },
+            { id: 'BUS-69', name: 'Bus 69', type: 'Bus', color: '#006837', textColor: '#fff' },
+            { id: 'TRAM-T1', name: 'Tram T1', type: 'Tramway', color: '#FF7F00', textColor: '#fff' },
+        ];
+
+        // Fonctions utilitaires
+        function filterStations(query, excluded = '') {
+            return stations
+                .filter(s => s.toLowerCase().includes(query.toLowerCase()) && s !== excluded)
+                .slice(0, 5);
+        }
+
+        function getLineInfo(lineName) {
+            return transportLines.find(l => l.name === lineName) || { color: '#666', textColor: '#fff' };
+        }
+
+        function generateMockRoutes() {
+            return [
+                {
+                    id: 1,
+                    from: state.departure,
+                    to: state.arrival,
+                    duration: '28 min',
+                    steps: [
+                        { line: 'Ligne 4', type: 'Métro', from: state.departure, to: 'Châtelet (Paris)', duration: '12 min' },
+                        { line: 'Ligne 1', type: 'Métro', from: 'Châtelet (Paris)', to: state.arrival, duration: '16 min' },
+                    ],
+                    cost: '2,15€',
+                    incidents: 0,
+                },
+                {
+                    id: 2,
+                    from: state.departure,
+                    to: state.arrival,
+                    duration: '35 min',
+                    steps: [
+                        { line: 'RER A', type: 'RER', from: state.departure, to: 'Nation (Paris)', duration: '18 min' },
+                        { line: 'Bus 38', type: 'Bus', from: 'Nation (Paris)', to: state.arrival, duration: '17 min' },
+                    ],
+                    cost: '2,15€',
+                    incidents: state.incidents.length > 0 ? 1 : 0,
+                },
+                {
+                    id: 3,
+                    from: state.departure,
+                    to: state.arrival,
+                    duration: '42 min',
+                    steps: [
+                        { line: 'Bus 69', type: 'Bus', from: state.departure, to: 'Bastille (Paris)', duration: '22 min' },
+                        { line: 'Ligne 2', type: 'Métro', from: 'Bastille (Paris)', to: state.arrival, duration: '20 min' },
+                    ],
+                    cost: '2,15€',
+                    incidents: 0,
+                },
+            ];
+        }
+
+        function handleSearch() {
+            if (!state.departure || !state.arrival) {
+                alert('Veuillez entrer une gare de départ et une destination');
+                return;
+            }
+            state.routes = generateMockRoutes();
+            state.selectedRoute = null;
+            render();
+        }
+
+        function handleAddIncident() {
+            if (!state.selectedLine || !state.incidentDescription.trim()) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+
+            const newIncident = {
+                id: state.incidents.length + 1,
+                line: state.selectedLine,
+                description: state.incidentDescription,
+                time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+                severity: 'high',
+                reports: Math.floor(Math.random() * 50) + 1,
+            };
+
+            state.incidents.unshift(newIncident);
+            state.showIncidentForm = false;
+            state.selectedLine = '';
+            state.incidentDescription = '';
+            render();
+        }
+
+        function renderStationDropdown(value, onChange, excluded = '') {
+            const matches = filterStations(value, excluded);
+            if (!value || matches.length === 0) return '';
+
+            return `
+                <div class="mt-2 bg-gray-50 rounded border border-gray-200">
+                    ${matches.map(station => `
+                        <div class="station-item px-3 py-2 hover:bg-indigo-50 cursor-pointer text-sm text-gray-700"
+                             onclick="state.${onChange === 'setDeparture' ? 'departure' : 'arrival'} = '${station}'; render();">
+                            📍 ${station}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderRoutes() {
+            if (state.routes.length === 0) return '';
+
+            return `
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">
+                        Itinéraires proposés <span class="text-indigo-600">(${state.routes.length})</span>
+                    </h3>
+                    <div class="space-y-3">
+                        ${state.routes.map(route => {
+                            const lineInfo = getLineInfo(route.steps[0].line);
+                            return `
+                                <div class="route-card p-4 rounded-lg cursor-pointer ${
+                                    state.selectedRoute === route.id ? 'selected' : ''
+                                }"
+                                     onclick="state.selectedRoute = ${route.id}; render();">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <div class="text-2xl font-bold text-indigo-600">${route.duration}</div>
+                                            <div class="text-xs text-gray-500">Durée totale</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-lg font-bold text-green-600">${route.cost}</div>
+                                            ${route.incidents > 0 ? `
+                                                <div class="text-xs text-red-600 mt-1">
+                                                    🔴 ${route.incidents} incident
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        ${route.steps.map((step, idx) => {
+                                            const info = getLineInfo(step.line);
+                                            return `
+                                                <div class="flex items-start gap-3">
+                                                    <div class="line-badge" style="background-color: ${info.color}; color: ${info.textColor};">
+                                                        ${idx + 1}
+                                                    </div>
+                                                    <div class="flex-1 text-sm">
+                                                        <div class="font-semibold text-gray-800">${step.line}</div>
+                                                        <div class="text-xs text-gray-600">${step.from} → ${step.to}</div>
+                                                        <div class="text-xs text-gray-500 mt-1">⏱️ ${step.duration}</div>
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderIncidents() {
+            const incidentCount = state.incidents.length;
+            const affectedLines = new Set(state.incidents.map(i => i.line)).size;
+
+            return `
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🗺️ Incidents en temps réel</h3>
+
+                    ${incidentCount === 0 ? `
+                        <div class="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+                            <div class="text-4xl mb-2">✅</div>
+                            <p class="text-green-700 font-semibold">Aucun incident signalé</p>
+                            <p class="text-green-600 text-sm mt-1">Le réseau fonctionne normalement</p>
+                        </div>
+                    ` : `
+                        <div class="incident-scroll space-y-3">
+                            ${state.incidents.map(incident => {
+                                const info = getLineInfo(incident.line);
+                                return `
+                                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div class="line-badge incident-badge"
+                                                 style="background-color: ${info.color}; color: ${info.textColor};">
+                                                ${incident.line.substring(0, 3)}
+                                            </div>
+                                            <div class="text-xs text-gray-500">${incident.time}</div>
+                                        </div>
+                                        <p class="text-gray-800 text-sm font-semibold mb-2">${incident.description}</p>
+                                        <div class="flex gap-4 text-xs text-gray-600">
+                                            <span>👥 ${incident.reports} signalements</span>
+                                            <span class="text-red-600 font-semibold">🔴 Problème grave</span>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `}
+
+                    <div class="mt-6 pt-6 border-t-2 border-gray-200 grid grid-cols-2 gap-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-red-600">${incidentCount}</div>
+                            <div class="text-xs text-gray-600">Incidents actifs</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-orange-600">${affectedLines}</div>
+                            <div class="text-xs text-gray-600">Lignes affectées</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderIncidentModal() {
+            if (!state.showIncidentForm) return '';
+
+            return `
+                <div class="modal-overlay" onclick="if(event.target === this) { state.showIncidentForm = false; render(); }">
+                    <div class="glass rounded-lg shadow-2xl max-w-md w-full p-6 m-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800">🐔 Signaler un problème</h2>
+                            <button onclick="state.showIncidentForm = false; render();" class="text-gray-500 hover:text-gray-700 text-2xl">
+                                ✕
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Quelle ligne?</label>
+                                <select id="lineSelect" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                                        onchange="state.selectedLine = this.value;">
+                                    <option value="">Choisir une ligne...</option>
+                                    ${transportLines.map(line => `
+                                        <option value="${line.name}">${line.name} (${line.type})</option>
+                                    `).join('')}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Décrivez le problème
+                                </label>
+                                <textarea id="descriptionInput" maxlength="200"
+                                          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-red-500 resize-none h-24"
+                                          placeholder="Bouchons, métro bloqué, chauffeur agressif, arrêt supprimé..."
+                                          onchange="state.incidentDescription = this.value;"
+                                          oninput="document.getElementById('charCount').textContent = this.value.length;"></textarea>
+                                <div class="text-xs text-gray-500 mt-1">
+                                    <span id="charCount">0</span>/200 caractères
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 border border-blue-200 rounded p-3 text-xs text-blue-700">
+                                💬 Votre signalement aide les autres utilisateurs en temps réel
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button onclick="state.showIncidentForm = false; render();"
+                                        class="flex-1 px-4 py-2 border-2 border-gray-300 text-gray-700 font-bold rounded-lg hover:bg-gray-50 transition">
+                                    Annuler
+                                </button>
+                                <button onclick="handleAddIncident();"
+                                        class="flex-1 px-4 py-2 rooster-button text-white font-bold rounded-lg"
+                                        id="submitBtn">
+                                    📍 Signaler
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function render() {
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                <div class="min-h-screen">
+                    <!-- Header -->
+                    <header class="bg-white shadow-md sticky top-0 z-10">
+                        <div class="max-w-6xl mx-auto px-4 py-4">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="text-4xl font-bold text-indigo-600">🚇 MBila</div>
+                                <div>
+                                    <div class="text-gray-800 font-semibold">City Transport Navigator</div>
+                                    <div class="text-gray-500 text-xs">Trouvez votre itinéraire • Signalez les problèmes • En temps réel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Main Content -->
+                    <main class="max-w-6xl mx-auto px-4 py-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- Panneau de recherche -->
+                            <div class="lg:col-span-1">
+                                <div class="glass rounded-lg shadow-lg p-6 sticky top-24">
+                                    <h2 class="text-xl font-bold text-gray-800 mb-4">Rechercher un itinéraire</h2>
+
+                                    <!-- Départ -->
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Départ</label>
+                                        <input type="text" id="departureInput" value="${state.departure}"
+                                               onchange="state.departure = this.value; render();"
+                                               oninput="this.value && (state.departure = this.value, render());"
+                                               placeholder="Gare de..."
+                                               class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition">
+                                        ${state.departure ? renderStationDropdown(state.departure, 'setDeparture', state.arrival) : ''}
+                                    </div>
+
+                                    <!-- Arrivée -->
+                                    <div class="mb-6">
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Arrivée</label>
+                                        <input type="text" id="arrivalInput" value="${state.arrival}"
+                                               onchange="state.arrival = this.value; render();"
+                                               oninput="this.value && (state.arrival = this.value, render());"
+                                               placeholder="Destination..."
+                                               class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition">
+                                        ${state.arrival ? renderStationDropdown(state.arrival, 'setArrival', state.departure) : ''}
+                                    </div>
+
+                                    <button onclick="handleSearch();"
+                                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition transform hover:scale-105">
+                                        🔍 Rechercher
+                                    </button>
+
+                                    <!-- Bouton poulet 🐔 -->
+                                    <button onclick="state.showIncidentForm = true; render();"
+                                            class="w-full mt-4 rooster-button text-white font-bold py-3 rounded-lg text-lg">
+                                        🐔 Signaler un problème
+                                    </button>
+
+                                    <!-- Statistiques -->
+                                    <div class="mt-6 pt-6 border-t-2 border-gray-200">
+                                        <div class="text-sm text-gray-600">
+                                            <div class="flex justify-between mb-2">
+                                                <span>Incidents actifs:</span>
+                                                <span class="font-bold text-red-600 text-lg">${state.incidents.length}</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Lignes affectées:</span>
+                                                <span class="font-bold text-orange-600 text-lg">${new Set(state.incidents.map(i => i.line)).size}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Résultats et carte -->
+                            <div class="lg:col-span-2 space-y-6">
+                                ${renderRoutes()}
+                                ${renderIncidents()}
+                            </div>
+                        </div>
+                    </main>
+
+                    ${renderIncidentModal()}
+                </div>
+            `;
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>

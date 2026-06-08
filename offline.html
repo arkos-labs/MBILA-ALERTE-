@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBila - Mode Hors Ligne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center text-white">
+        <div style="font-size: 80px; margin-bottom: 20px;">🚇</div>
+        <h1 style="font-size: 32px; font-weight: bold; margin-bottom: 10px;">MBila</h1>
+        <p style="font-size: 18px; margin-bottom: 30px; opacity: 0.9;">Mode hors ligne</p>
+
+        <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 16px; max-width: 400px; margin: 0 auto;">
+            <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">Pas de connexion Internet</h2>
+
+            <p style="font-size: 16px; opacity: 0.9; margin-bottom: 30px;">
+                MBila fonctionne en mode offline avec les données locales en cache.
+            </p>
+
+            <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; text-align: left; margin-bottom: 30px;">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">✓ Ce que vous pouvez faire :</h3>
+                <ul style="text-align: left; font-size: 14px; opacity: 0.9; line-height: 1.8;">
+                    <li>📍 Consulter les stations en cache</li>
+                    <li>🚨 Signaler un incident (sera synchronisé)</li>
+                    <li>📊 Voir les incidents hors ligne</li>
+                    <li>⭐ Accéder aux itinéraires favoris</li>
+                </ul>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; text-align: left; margin-bottom: 30px;">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">✗ Limitaciones hors ligne :</h3>
+                <ul style="text-align: left; font-size: 14px; opacity: 0.8; line-height: 1.8;">
+                    <li>Pas de recherche d'itinéraires en temps réel</li>
+                    <li>Pas de notifications push</li>
+                    <li>Données incidents limitées à 24h</li>
+                    <li>Pas de synchronisation réseau</li>
+                </ul>
+            </div>
+
+            <button onclick="location.href = '/'" style="background: white; color: #667eea; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 16px; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+                ↻ Retour à l'app
+            </button>
+        </div>
+
+        <p style="margin-top: 40px; opacity: 0.7; font-size: 14px;">
+            Vérifiez votre connexion et rafraîchissez la page
+        </p>
+    </div>
+</body>
+</html>

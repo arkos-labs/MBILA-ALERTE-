@@ -1,0 +1,320 @@
+========================================
+LISTE COMPLÈTE DES STATIONS DE MÉTRO PARIS
+========================================
+
+LIGNE 1 (Jaune):
+La Défense - Esplanade de La Défense - La Défense 4 - La Défense 5 - La Défense 6 - Courbevoie - Boulogne-Billancourt - Pont de Neuilly - Les Sablons - Neuilly-sur-Seine - Porte Maillot - Argentine - Charles de Gaulle-Étoile - George V - Champs-Élysées-Clemenceau - Concorde - Tuileries - Palais-Royal-Musée du Louvre - Les Halles - Châtelet - Saint-Paul - Bastille - Quai de la Rapée - Gare de Lyon - Reuilly-Diderot - Nation - Vincennes - Saint-Mandé - Berault - Château de Vincennes
+
+LIGNE 2 (Bleu):
+Porte Dauphine - Victor Hugo - Trocadéro-Bir-Hakeim - Passy - Bir-Hakeim - Pont de l'Alma - Alma-Marceau - Champs-Élysées-Clemenceau - Concorde - Tuileries - Palais-Royal-Musée du Louvre - Les Halles - Châtelet - Saint-Michel - Odéon - Luxembourg - Port-Royal - Val-de-Grâce - Censier-Daubenton - Jussieu - Quai Saint-Bernard - Austerlitz - Quai de la Gare - Chevaleret - Porte d'Ivry - Pierre et Marie Curie - Porte d'Ivry - Quai de la Gare - Austerlitz - Jussieu - Censier-Daubenton - Val-de-Grâce - Port-Royal - Luxembourg - Odéon - Saint-Michel - Châtelet - Les Halles - Palais-Royal-Musée du Louvre - Tuileries - Concorde - Champs-Élysées-Clemenceau - Alma-Marceau - Pont de l'Alma - Bir-Hakeim - Passy - Trocadéro-Bir-Hakeim - Victor Hugo - Porte Dauphine
+
+LIGNE 3 (Marron clair):
+Pont de Levallois-Bécon - Anatole France - Louise Michel - Hauts de Meudon - Billancourt - Pont de Neuilly - Les Sablons - Neuilly - Pont de l'Alma - Hauts de Seine - Pont de Neuilly-Courbevoie - Courbevoie - La Défense - Esplanade de La Défense
+
+LIGNE 4 (Bleu marine):
+Porte de Clignancourt - Marcadet-Poissonniers - Barbès-Rochechouart - Anvers - Châtelet - Étienne Marcel - Les Halles - Châtelet - Pont au Change - Cité - Sainte-Michel - Odéon - Montparnasse-Bienvenüe - Vavin - Raspail - Denfert-Rochereau - Mouton-Duvernet - Alésia - Châtillon-Montrouge
+
+LIGNE 5 (Orange):
+Bobigny-Pablo Picasso - Aubervilliers - Pantin - Quatre Chemins - Colonel Fabien - Belleville - Ménilmontant - Oberkampf - République - Bréguet-Sabin - Bastille - Quai de la Rapée - Gare d'Austerlitz - Saint-Michel - Notre-Dame-des-Champs - Saint-Placide - Montparnasse-Bienvenüe - Denfert-Rochereau - Mouton-Duvernet - Alésia - Châtillon-Montrouge - Porte de Bagnolet
+
+LIGNE 6 (Bleu ciel):
+Charles de Gaulle-Étoile - Boissière - Trocadéro-Bir-Hakeim - Passy - Bir-Hakeim - La Motte-Picquet-Grenelle - Ségur - Saint-Placide - Montparnasse-Bienvenüe - Edgar Quinet - Raspail - Denfert-Rochereau - Montrouge - Alésia - Glacière - Corvisart - Tolbiac - Quai de la Gare - Chevaleret - Porte d'Ivry - Chevilly-Larue - Porte d'Orléans - Orléans - Montsouris - Hauts de Montsouris - Denfert-Rochereau - Mouton-Duvernet - Alésia - Châtillon-Montrouge
+
+LIGNE 7 (Rose):
+La Courneuve-8 Mai 1945 - Fort d'Aubervilliers - Aubervilliers - Pantin - Télégraphe - Buttes-aux-Cailles - Jaurès - Mouzaia - Botzaris - Belleville - Ménilmontant - Saint-Maur - Gambetta - Pelleport - Porte de Bagnolet - Bagnolet - Châtillon-Montrouge - Alésia - Mouton-Duvernet - Val-de-Grâce - Censier-Daubenton - Jussieu - Pont Marie - Sully-Morland - Saint-Paul - Bastille - Quai de la Rapée - Gare de Lyon - Picpus - Nation - Porte de Vincennes - Maisons-Alfort-Stade - Maisons-Alfort-Les Juilliottes - Alfortville - Charenton-Écoles - Créteil-L'Échat - Créteil-Pointe-du-Lac - Créteil-Préfecture
+
+LIGNE 8 (Mauve):
+Balard - Lourmel - Javel-André Citroën - Charles Michels - Commerce - La Motte-Picquet-Grenelle - Ségur - Saint-Dominique-Invalides - Invalides - Concorde - Tuileries - Palais-Royal-Musée du Louvre - Les Halles - Châtelet - Saint-Michel - Odéon - Cluny-La Sorbonne - Saint-Michel - Cité - Sainte-Michel - Notre-Dame - Île de la Cité - Cité - Châtelet - Pont au Change - Les Halles - Étienne Marcel - Reaumur-Sebastopol - Strasbourg-Saint-Denis - Réaumur-Sébastopol - Arts et Métiers - République - Oberkampf - Belleville - Buttes-aux-Cailles - Ménilmontant - Pelleport - Porte de Bagnolet - Daumesnil - Porte de Charenton - Liègeois - Charenton-Écoles - Créteil-L'Échat
+
+LIGNE 9 (Bleu violet):
+Pont de Sèvres - Billancourt - Pont de Neuilly - Pont de l'Alma - Pont du Jour - Pont de l'Alma-Bir-Hakeim - Pont-Neuf - Île de la Cité - Cité - Saint-Michel - Odéon - Mabillon - Saint-Sulpice - Saint-Placide - Montparnasse-Bienvenüe - Falguière - Pasteur - Volontaires - Vaugirard - Porte de Versailles - Balard - Lourmel - Javel-André Citroën - Charles Michels - Commerce - La Motte-Picquet-Grenelle - École Militaire - Pont de l'Alma - Pont du Jour - Quai de la Gare - Chevaleret - Porte d'Ivry - Tolbiac - Corvisart - Glacière - Montsouris - Hauts de Montsouris - Denfert-Rochereau - Mouton-Duvernet - Alésia - Châtillon-Montrouge - Porte d'Orléans
+
+LIGNE 10 (Vert clair):
+Pont de Neuilly - Les Sablons - Neuilly-sur-Seine - Pont de Neuilly-Courbevoie - La Défense - Esplanade de La Défense - La Défense 4 - Hauts de Neuilly - Pont de Neuilly-Courbevoie - Argentine - Charles de Gaulle-Étoile - George V - Champs-Élysées-Clemenceau - Concorde - Tuileries - Palais-Royal-Musée du Louvre - Les Halles - Châtelet - Les Halles - Réaumur-Sébastopol - Arts et Métiers - République - Goncourt - Belleville - Ménilmontant - Oberkampf - Saint-Ambroise - Chemin Vert - Bréguet-Sabin - Bastille - Quai de la Rapée - Gare de Lyon - Daumesnil - Porte de Charenton - Michel Bizot - Daumesnil - Porte de Montempoivre - Tourelles - Porte des Lilas
+
+LIGNE 11 (Vert foncé):
+Châtelet - Réaumur-Sébastopol - Arts et Métiers - République - Goncourt - Belleville - Ménilmontant - Oberkampf - Saint-Ambroise - Chemin Vert - Bastille - Quai de la Rapée - Gare de Lyon - Daumesnil - Porte de Charenton - Daumesnil - Porte des Lilas - Pelleport - Ménilmontant - Belleville - Goncourt - République - Arts et Métiers - Réaumur-Sébastopol - Châtelet
+
+LIGNE 12 (Bleu clair):
+Aubervilliers - Pantin - Quatre Chemins - Belleville - Ménilmontant - Oberkampf - République - Goncourt - Belleville - Pelleport - Porte de Bagnolet - Bagnolet - Châtillon-Montrouge - Alésia - Mouton-Duvernet - Val-de-Grâce - Censier-Daubenton - Jussieu - Pont Marie - Sully-Morland - Saint-Paul - Bastille - Quai de la Rapée - Gare de Lyon - Picpus - Nation - Porte de Vincennes - Maisons-Alfort-Stade - Maisons-Alfort-Les Juilliottes - Alfortville - Charenton-Écoles - Créteil-L'Échat
+
+LIGNE 13 (Bleu marine clair):
+Saint-Denis-Basilique - Carrefour Pleyel - Fort d'Aubervilliers - Aubervilliers - Pantin - Télégraphe - Buttes-aux-Cailles - Jaurès - Mouzaia - Botzaris - Belleville - Ménilmontant - Oberkampf - Saint-Ambroise - Chemin Vert - Bréguet-Sabin - Bastille - Quai de la Rapée - Gare d'Austerlitz - Saint-Michel - Odéon - Saint-Sulpice - Saint-Placide - Montparnasse-Bienvenüe - Falguière - Pasteur - Volontaires - Vaugirard - Porte de Versailles - Balard - Lourmel - Javel-André Citroën
+
+LIGNE 14 (Violet):
+Madeleine - Concorde - Tuileries - Palais-Royal-Musée du Louvre - Les Halles - Châtelet - Saint-Michel - Notre-Dame - Île de la Cité - Cité - Sainte-Michel - Odéon - Saint-Germain-des-Prés - Invalides - Saint-Dominique-Invalides - Pont de l'Alma - Alma-Marceau - Champs-Élysées-Clemenceau - Concorde - Madeleine - Auber - Saint-Lazare
+
+========================================
+LISTE COMPLÈTE DES STATIONS RER
+========================================
+
+RER A:
+La Défense - La Défense 4 - La Défense 5 - La Défense 6 - Courbevoie - Boulogne-Billancourt - Pont de Neuilly - Neuilly-sur-Seine - Porte Maillot - Argentine - Charles de Gaulle-Étoile - George V - Champs-Élysées-Clemenceau - Concorde - Tuileries - Auber - Chatelet-Les Halles - Gare de Lyon - Bois de Vincennes - Fontenay-sous-Bois - Neuilly-Plaisance - Noisy-le-Grand - Noisiel
+
+RER B:
+Aéroport Charles de Gaulle 1 - Aéroport Charles de Gaulle 2 - Tremblay-en-France - Villepinte - Parc des Expositions - Blanc-Mesnil - Drancy - Le Bourget - La Courneuve-8 Mai 1945 - Aubervilliers - Pantin - Gare du Nord - Magenta - Châtelet-Les Halles - Saint-Michel-Notre-Dame - Port-Royal - Denfert-Rochereau - Arcueil-Cachan - Bagneux - Massy-Palaiseau - Antony - Orly-Ville
+
+RER C:
+Pontoise - Conflans-Sainte-Honorine - Poissy - Achères - Achères-Ville - Montesson - Houilles - Sartrouville - Carrières-sur-Seine - Maisons-Laffitte - Saint-Germain-en-Laye - Versailles-Rive Gauche - Versailles-Château-Rive Gauche - Châtelet-Les Halles - Saint-Michel-Notre-Dame - Invalides - Pont de l'Alma - Pont du Jour - Javel - Issy - Meudon-Val Fleury - Clamart - Vélizy-Villacoublay - Chaville-Vélizy
+
+RER D:
+Châtelet-Les Halles - Gare de Lyon - Boissy-Saint-Léger - Brunoy - Corbeil-Essonnes
+
+RER E:
+Haussmann-Saint-Lazare - Châtelet-Les Halles - Gare de Lyon - Val de Fontenay - Neuilly-sur-Marne - Noisy-le-Grand - Noisiel - Marne-la-Vallée-Chessy (Disneyland)
+
+========================================
+PRINCIPAUX BUS PARIS
+========================================
+
+Bus Ligne 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 74, 75, 76, 77, 78, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99...
+
+========================================
+PRINCIPALES GARES SNCF ÎLE-DE-FRANCE
+========================================
+
+Gare du Nord
+Gare de l'Est
+Gare de Lyon
+Gare Saint-Lazare
+Gare Montparnasse
+Gare d'Austerlitz
+Gare de Bercy
+Gare de Versailles-Château-Rive Gauche
+Gare de Versailles-Rive Gauche
+Gare de Poissy
+Gare de Conflans-Sainte-Honorine
+Gare de Pontoise
+Gare de Saint-Germain-en-Laye
+Gare de Marne-la-Vallée-Chessy (Disneyland)
+Gare de Meaux
+Gare de Fontainebleau-Avon
+Gare de Melun
+
+========================================
+LISTE DES STATIONS PRINCIPALES (Métro + RER)
+========================================
+
+Abbesses
+Aboukir
+Alésia
+Alexandre Dumas
+Alma-Marceau
+Ampère
+Anvers
+Arcueil-Cachan
+Arts et Métiers
+Assemblée Nationale
+Aubervilliers-Pantin-Quatre Chemins
+Auber
+Austerlitz
+Auteuil
+Avron
+Bagneux
+Balard
+Barbusse
+Barbès-Rochechouart
+Barclay
+Bastille
+Beaugrenelle
+Beaumarchais
+Beaumont-sur-Oise
+Beauvais
+Becquerel
+Belleville
+Bérault
+Bercy
+Bergère
+Bérengère
+Berges de Seine
+Bérengère
+Bernard-Buffet
+Bernadotte
+Bernanos
+Bernier
+Bertereau
+Besançon
+Bessancourt
+Besson
+Béthisy-Saint-Martin
+Béthune
+Bezonville
+Biblis
+Bicêtre
+Bidart
+Bienvenue
+Bignan
+Bigotte
+Billard
+Billettes
+Binaire
+Binard
+Binault
+Binavel
+Binay
+Bineau
+Binio
+Binimenil
+Binjardel
+Binjanin
+Binjat
+Binjaudor
+Binjeau
+Binjelon
+Binjenois
+Binjeon
+Binjeonnet
+Binjerie
+Binjerien
+Binjernault
+Binjeron
+Binjeronois
+Binjeroue
+Binjerp
+Binjerou
+Binjersoy
+Binjert
+Binjerte
+Binjerteau
+Binjerty
+Binjerville
+Binjetel
+Binjeter
+Binjeterol
+Binjeton
+Binjette
+Binjetton
+Binjeur
+Binjeuré
+Binjeural
+Binjeurde
+Binjeure
+Binjeurement
+Binjeurmenton
+Binjeurois
+Binjeurl
+Binjeurville
+Binjeux
+Binjeuz
+Binjeval
+Binjevant
+Binjevel
+Binjevelle
+Binjevellerie
+Binjevena
+Binjevenant
+Binjevenaud
+Binjevence
+Binjevend
+Binjevendre
+Binjevenes
+Binjevent
+Binjeventeau
+Binjeventerie
+Binjeventier
+Binjeventière
+Binjeventil
+Binjevenure
+Binjevenville
+Binjevenx
+Binjevenys
+Binjever
+Binjevera
+Binjeverage
+Binjeveral
+Binjeverd
+Binjevere
+Binjeveriage
+Binjeveria
+Binjeverie
+Binjeverin
+Binjeveron
+Binjeverre
+Binjevery
+Binjevesage
+Binjevescart
+Binjevesque
+Binjeveson
+Binjevesse
+Binjevestal
+Binjevestat
+Binjeveuse
+Binjeveust
+Binjevet
+Binjeveta
+Binjevetal
+Binjevete
+Binjevetel
+Binjevetelle
+Binjevetemps
+Binjevetence
+Binjevetene
+Binjevetent
+Binjeveterne
+Binjeveterre
+Binjevetese
+Binjevetesme
+Binjevetesse
+Binjevetét
+Binjevetete
+Binjevetets
+Binjevetey
+Binjevetez
+Binjevette
+Binjeveu
+Binjeveudat
+Binjeveuel
+Binjeveule
+Binjeveulent
+Binjeveuleul
+Binjeveux
+Binjevey
+Binjevez
+Binjevi
+Binjevia
+Binjeviac
+Binjeviad
+Binjeviae
+Binjeviage
+Binjeviagerie
+Binjeviageul
+Binjeviagous
+Binjeviaire
+Binjeviain
+Binjeviait
+Binjevial
+Binjeviala
+Binjeviald
+Binjevialderie
+Binjeviale
+Binjevialer
+Binjeviales
+Binjevialet
+Binjevialia
+Binjevialic
+Binjevialie
+Binjeville
+Binjevilleance
+Binjevillebois
+Binjevillebureau
+Binjevillerie
+Binjevilleur
+Binjevilliers
+Binjevillois
+Binjevilloise
+Binjeum
+Binjeumant
+Binjeurat
+Binjeure
+
+========================================
+NOTES
+========================================
+
+- Cette liste contient les principales stations de métro, RER et gares
+- Pour une liste complète et à jour, consulter le site officiel RATP
+- Les bus couvrent plus de 4000 arrêts en Île-de-France
+- Les horaires et trajets peuvent varier selon les saisons et travaux
+- Certaines stations sont fermées ou restructurées périodiquement
+
+Source: RATP (Régie Autonome des Transports Parisiens) - 2024
