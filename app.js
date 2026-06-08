@@ -121,7 +121,8 @@ function setupEventListeners() {
 
   // Textarea character counter
   document.getElementById('incidentDesc')?.addEventListener('input', (e) => {
-    document.getElementById('charCount').textContent = e.target.value.length;
+    const charCountEl = document.getElementById('charCount');
+    if (charCountEl) charCountEl.textContent = e.target.value.length;
   });
 
   // Photo input
@@ -270,24 +271,16 @@ async function submitReport(e) {
 
     if (existingIncident) {
       await incidentManager.upvoteIncident(existingIncident.id);
-      
-      statusDiv.innerHTML = `
-        <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 8px; text-align: center;">
-          ✓ Signalement existant confirmé !
-        </div>
-      `;
-      setTimeout(() => {
-        document.getElementById('reportForm').reset();
-        clearPhoto();
-        document.querySelectorAll('#incidentTypes button').forEach(b => {
-            b.style.borderColor = '#e5e7eb';
-            b.style.backgroundColor = '#ffffff';
-            b.classList.remove('ring-2', 'ring-blue-500', 'ring-offset-1');
-            delete b.dataset.selected;
-        });
-        statusDiv.innerHTML = '';
-        closeReportModal();
-      }, 1500);
+      document.getElementById('reportForm').reset();
+      clearPhoto();
+      document.querySelectorAll('#incidentTypes button').forEach(b => {
+          b.style.borderColor = '#e5e7eb';
+          b.style.backgroundColor = '#ffffff';
+          b.classList.remove('ring-2', 'ring-blue-500', 'ring-offset-1');
+          delete b.dataset.selected;
+      });
+      statusDiv.innerHTML = '';
+      closeReportModal();
       return;
     }
 
@@ -302,20 +295,14 @@ async function submitReport(e) {
       photo: photoData,
     });
 
-    statusDiv.innerHTML = `
-      <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 8px; text-align: center;">
-        ✓ Incident signalé avec succès!
-      </div>
-    `;
-
-    // Reset form
-    setTimeout(() => {
-      document.getElementById('reportForm').reset();
-      document.getElementById('charCount').textContent = '0';
-      document.getElementById('photoPreview').innerHTML = '';
-      statusDiv.innerHTML = '';
-      closeReportModal();
-    }, 2000);
+    // Reset form and close modal immediately
+    document.getElementById('reportForm').reset();
+    const charCountEl = document.getElementById('charCount');
+    if (charCountEl) charCountEl.textContent = '0';
+    const photoPreviewEl = document.getElementById('photoPreview');
+    if (photoPreviewEl) photoPreviewEl.innerHTML = '';
+    statusDiv.innerHTML = '';
+    closeReportModal();
   } catch (err) {
     console.error('Report error:', err);
     statusDiv.innerHTML = `
